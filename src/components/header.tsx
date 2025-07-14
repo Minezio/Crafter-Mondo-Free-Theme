@@ -79,24 +79,24 @@ export default function Header() {
   }, []);
 
   return (
-    <header id="header" className="relative bg-gradient-to-r from-blue-600 via-purple-700 to-blue-900 text-white shadow-lg overflow-hidden">
+    <header id="header" className="relative bg-gradient-to-r from-blue-752 via-red-800 to-blue-900 text-white shadow-lg overflow-hidden">
       {/* Background image with overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center opacity-40"
         style={{ backgroundImage: "url('/images/header-bg.webp')" }}
       />
       {/* Yumuşak geçiş efekti */}
-      <div className="pointer-events-none absolute bottom-0 left-0 w-full h-24 z-0"
+      <div className="pointer-events-none absolute bottom-0 left-0 w-full h-30 z-0"
            style={{
              background: "linear-gradient(to bottom, rgba(31,41,55,0) 0%, rgba(31,41,55,0.5) 80%, rgba(31,41,55,1) 100%)",
-             backdropFilter: "blur(8px)"
+             backdropFilter: "blur(1px)"
            }}
       />
       {/* Navbar üstte */}
-      <div className="relative z-10 flex flex-col items-center pt-6 px-6">
-        <div className="w-full flex justify-center mb-10">
+      <div className="relative z-10 flex flex-col items-center pt-6 px-4">
+        <div className="w-full flex justify-center mb-30">
           <div
-            className="transition-all duration-500 ease-in-out bg-white/10 hover:bg-white/20 backdrop-blur shadow-none px-8 py-3 inline-flex items-center rounded-full"
+            className="transition-all duration-500 ease-in-out bg-white/10 hover:bg-white/20 backdrop-blur shadow-none px-8 py-1 inline-flex items-center rounded-full"
             style={{
               boxShadow: "none",
               maxWidth: "unset",
