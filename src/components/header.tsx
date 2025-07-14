@@ -79,73 +79,61 @@ export default function Header() {
   }, []);
 
   return (
-    <header id="header" className="relative">
-      <div className="h-80 flex flex-col relative z-30">
-        {/* Server Info & Buttons */}
-        <div
-          className="absolute w-full top-24 md:top-32"
-          style={{ zIndex: 9999 }}
-        >
-          <div className="px-8 md:px-20 container mx-auto w-full flex justify-start flex-col md:flex-row md:justify-between gap-4">
-            {/* Server Status */}
-            <div className="mt-6 md:mt-0 hidden md:flex flex-row items-center justify-start gap-4 md:block">
-              <div className="transition-all duration-300 hover:scale-[1.03] hover:bg-blue-100/5 p-1 rounded-lg">
-                <ServerStatusBar status={serverStatus} />
-              </div>
-            </div>
-
-            {/* Discord Button */}
-            <a
-              href={discordStatus?.invite || "#"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 md:mt-0 hidden md:flex flex-row-reverse items-center justify-end gap-4 md:block group transition-all duration-300 hover:scale-[1.03] hover:bg-blue-100/5 p-1 rounded-lg"
-            >
-              <div className="md:text-right font-medium">
-                <div className="text-gray-300 group-hover:text-blue-300 transition">
-                  {discordStatus ? discordStatus.online : "-"} ÜYE ÇEVRİMİÇİ
-                </div>
-                <span className="text-white text-sm uppercase opacity-50 group-hover:opacity-80">
-                  DISCORD TOPLULUĞU
-                </span>
-              </div>
-              <div className="header-icon w-14 h-14 bg-blue-100/10 rounded-lg flex items-center justify-center group-hover:bg-blue-100/20 transition">
-                <DiscordIcon className="w-10 h-10" />
-              </div>
-            </a>
+    <header id="header" className="relative bg-gradient-to-r from-blue-600 via-purple-700 to-blue-900 text-white shadow-lg overflow-hidden">
+      {/* Background image with overlay */}
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-40"
+        style={{ backgroundImage: "url('/images/header-bg.webp')" }}
+      />
+      {/* Yumuşak geçiş efekti */}
+      <div className="pointer-events-none absolute bottom-0 left-0 w-full h-24 z-0"
+           style={{
+             background: "linear-gradient(to bottom, rgba(31,41,55,0) 0%, rgba(31,41,55,0.5) 80%, rgba(31,41,55,1) 100%)",
+             backdropFilter: "blur(8px)"
+           }}
+      />
+      {/* Navbar üstte */}
+      <div className="relative z-10 flex flex-col items-center pt-6 px-6">
+        <div className="w-full flex justify-center mb-10">
+          <div
+            className="transition-all duration-500 ease-in-out bg-white/10 hover:bg-white/20 backdrop-blur shadow-none px-8 py-3 inline-flex items-center rounded-full"
+            style={{
+              boxShadow: "none",
+              maxWidth: "unset",
+              minWidth: "unset",
+              borderRadius: "9999px",
+            }}
+          >
+            <Navbar />
           </div>
         </div>
-
-        {/* Logo */}
-        <div className="flex justify-center items-center mt-10 md:mt-auto mb-12 md:mb-0 w-full relative z-20 md:z-30">
-          <Image
-            src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${
-              website?.image || "/images/default-logo.png"
-            }`}
-            alt={website?.name || `Logo`}
-            width={200}
-            height={35}
-            className="max-h-logo mb-20 z-30 hover:scale-105 transition-all duration-300"
-            priority
-          />
+        {/* Logo ve oyuncu aktif */}
+        <div className="flex flex-col items-center justify-center w-full gap-6">
+          {/* Logo */}
+          <div className="flex-shrink-0 flex flex-col items-center justify-center" style={{ flex: "0 0 auto" }}>
+            <Image
+              src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${website?.image || "/images/default-logo.png"}`}
+              alt={website?.name || `Logo`}
+              width={260}
+              height={260}
+              className="object-contain drop-shadow-2xl"
+              style={{
+                filter: "drop-shadow(0 8px 32px rgba(0,0,0,0.25))"
+              }}
+              priority
+            />
+          </div>
+          {/* Oyuncu Aktif */}
+          <div>
+            <span
+              className="flex items-center gap-2 px-8 py-3 rounded-xl text-white font-semibold text-lg transition-all duration-300"
+              style={{ minWidth: 180 }}
+            >
+              <ServerStatusBar status={serverStatus} />
+            </span>
+          </div>
         </div>
-
-        {/* Background Image */}
-        <div
-          className="absolute top-0 left-0 h-full w-full bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/header-bg.webp')" }}
-        />
       </div>
-
-      <Navbar />
-
-      <style jsx>{`
-        @media (max-width: 768px) {
-          .hidden.md\\:flex {
-            display: none;
-          }
-        }
-      `}</style>
     </header>
   );
 }

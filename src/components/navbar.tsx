@@ -111,10 +111,13 @@ export function Navbar() {
 
   return (
     <nav 
-      className={`z-30 w-full bg-white/90 backdrop-blur-lg dark:bg-gray-900/90 border-b border-gray-200/30 dark:border-gray-700/30 transition-all duration-700 ease-out transform ${isSticky ? 'fixed top-0 shadow-xl shadow-black/10 dark:shadow-black/30 translate-y-0' : 'relative translate-y-0'}`}
+      className={`z-30 w-full bg-transparent transition-all duration-700 ease-out transform ${isSticky ? 'fixed top-0 shadow-xl shadow-black/10 dark:shadow-black/30 translate-y-0' : 'relative translate-y-0'}`}
       style={{
+        background: "transparent",
+        borderRadius: 0,
+        boxShadow: "none",
         transition: 'all 0.7s cubic-bezier(0.4, 0, 0.2, 1)',
-        willChange: 'transform, opacity, background-color'
+        willChange: 'transform, opacity, background-color',
       }}
     >
       <div className="container mx-auto px-4">

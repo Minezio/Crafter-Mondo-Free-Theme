@@ -49,6 +49,13 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
         <InnovativeSignups signups={latestSignups} />
       )}
       <Footer server={server} />
+      {/* BURAYI SİLİN */}
+      {/* <div className="pointer-events-none absolute bottom-0 left-0 w-full h-24 z-20"
+           style={{
+             background: "linear-gradient(to bottom, rgba(31,41,55,0) 0%, rgba(31,41,55,0.5) 80%, rgba(31,41,55,1) 100%)",
+             backdropFilter: "blur(8px)"
+           }}
+      /> */}
     </>
   );
 }
